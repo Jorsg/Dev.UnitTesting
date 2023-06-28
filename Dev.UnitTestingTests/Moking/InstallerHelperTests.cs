@@ -34,5 +34,15 @@ namespace Dev.UnitTestingTests.Moking
 
 			Assert.That(result, Is.False);
 		}
+
+		[Test]
+		public void DownloaderInstaller_DownlodFails_ReturnTrue()
+		{
+			_fileDownloader.Setup(c => c.DownloadFile(It.IsAny<string>(), It.IsAny<string>()));
+
+			var result = _installerHelper.DownloadInstaller("customer", "installer");
+
+			Assert.That(result, Is.True);
+		}
 	}
 }
